@@ -42,7 +42,7 @@ def get_connection():
 def check_db_connection():
     connection = get_connection()
     cursor = connection.cursor()
-    cursor.execute("SELECT version()")  # PostgreSQL syntax
+    cursor.execute("SELECT version()")  
     version = cursor.fetchone()[0]
     cursor.close()
     connection.close()
@@ -162,6 +162,5 @@ def get_inventory(item_id):
             "status": "error",
             "message": str(e)
         }), 500
-log("A request to /inventory/42 has been received")
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    app.run(host="0.0.0.0", port=5000)
